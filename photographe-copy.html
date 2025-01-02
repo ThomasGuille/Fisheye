@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/style.css">
+    <title>TP Photographes</title>
+</head>
+<body>
+
+    <div class="modal">
+        <h2 class="modal__title">Contactez-moi</h2>
+        <h2 class="modal__name">gehrs</h2>
+        <form action="" class="modal__form">
+            <label for="form__field__prenom" class="form__label">Prénom</label>
+            <input type="text" class="form__fiel__prenom">
+
+            <label for="form__field__nom" class="form__label">Nom</label>
+            <input type="text" class="form__fiel__nom">
+
+            <label for="form__field__mail" class="form__label">Email</label>
+            <input type="text" class="form__fiel__mail">
+
+            <label for="form__field__message" class="form__label"></label>
+            <textarea name="" id="" class="form__field__message" rows="3"></textarea>
+        </form>
+    </div>
+
+    <main class="main__photographe">
+    <div class="photographe__banner">
+        <div class="photographe__details">
+            <p class="photographe__name">Machine Truque</p>
+            <p class="photographe__location">quelquepart</p>
+            <p class="photographe__tagline">je suis beau...</p>
+        </div>
+        <p class="photographe__contact">Contactez-moi</p>
+        <div class="portrait__content">
+            <img src="assets/images/photographers/thumbnails/RhodeDubois.webp" alt="" class="portrait">
+        </div>
+    </div>
+
+    <div class="photographe__main">
+        <div class="sortBy">
+            <label for="sortBy__menu" class="sortBy__title">Trier par </label>
+            <select class="sortBy__menu">
+                <option value="Popularité">Popularité</option>
+                <option value="Date">Date</option>
+                <option value="Titre">Titre</option>
+            </select>
+        </div>
+
+        <div class="photographe__realisations">
+            <figure class="photographe__card">
+                <div class="picture">
+                    <a href="" class="realistation__link">
+                        <img src="assets/images/photographers/samplePhotos-Small/Ellie-Rose Wilkens/Sport_Jump.webp" alt="" class="realisation__picture">
+                    </a>
+                </div>
+                <figurecaption class="realisation__details">
+                    <p class="realisation__title">getghs</p>
+                    <p class="realisation__like">12 (like)</p>
+                </figurecaption>
+            </figure>
+
+            <figure class="photographe__card">
+                <a href="" class="realistation__link">
+                    <img src="assets/images/photographers/samplePhotos-Small/Ellie-Rose Wilkens/Architecture_Connected_Curves.webp" alt="" class="realisation__picture">
+                </a>
+                <figurecaption class="realisation__details">
+                    <p class="realisation__title">getghs</p>
+                    <p class="realisation__like">12 (like)</p>
+                </figurecaption>
+            </figure>
+
+            <figure class="photographe__card">
+                <a href="" class="realistation__link">
+                    <img src="assets/images/photographers/samplePhotos-Small/Ellie-Rose Wilkens/Architecture_Connected_Curves.webp" alt="" class="realisation__picture">
+                </a>
+                <figurecaption class="realisation__details">
+                    <p class="realisation__title">getghs</p>
+                    <p class="realisation__like">12 (like)</p>
+                </figurecaption>
+            </figure>
+
+            <figure class="photographe__card">
+                <a href="" class="realistation__link">
+                    <img src="assets/images/photographers/samplePhotos-Small/Ellie-Rose Wilkens/Architecture_Connected_Curves.webp" alt="" class="realisation__picture">
+                </a>
+                <figurecaption class="realisation__details">
+                    <p class="realisation__title">getghs</p>
+                    <p class="realisation__like">12 (like)</p>
+                </figurecaption>
+            </figure>
+
+            <figure class="photographe__card">
+                <a href="" class="realistation__link">
+                    <img src="assets/images/photographers/samplePhotos-Small/Ellie-Rose Wilkens/Architecture_Connected_Curves.webp" alt="" class="realisation__picture">
+                </a>
+                <figurecaption class="realisation__details">
+                    <p class="realisation__title">getghs</p>
+                    <p class="realisation__like">12 (like)</p>
+                </figurecaption>
+            </figure>
+        </div>
+    </div>
+    <div class="likesTarif">
+        <p class="nbLikes"></p>
+        <p class="tarifpagephoto"></p>
+    </div>
+    </main>
+
+    <!-- <script type="module" src="scripts/pages/photographe.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,472 @@
+@import url(reset.css);
+
+body, html{
+    font-family: "DM Sans";
+    font-weight: 400;
+}
+
+/* HEADER BANIERE */
+
+.header__baniere{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 100px;
+}
+
+.logo{
+    width: 200px;
+    height: 50px;
+}
+
+.index__title{
+    font-size: 2rem;
+    color: #901C1C;
+    font-size: 36px;
+    letter-spacing: 0.1rem;
+}
+
+/* LIGHTBOX */
+
+.lightbox__content{
+    position: fixed;
+    display: none;
+}
+.lightbox__display{
+    display: initial;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.836);
+}
+
+.lightbox{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.lightbox__pic{
+    width: 100%;
+}
+
+.lightbox__title{
+    color: #901C1C;
+    font-size: 24px;
+}
+
+.close, .previous, .next{
+    position: fixed;
+    color: #901C1C;
+    font-size: 3rem;
+    z-index: 5;
+}
+.close:hover, .previous:hover, .next:hover{
+    cursor: pointer;
+}
+
+.close{
+    top: 2rem;
+    right: 3rem;
+}
+.previous{
+    top: calc(50vh - 1.5rem);
+    left: 3rem;
+}
+.next{
+    top: calc(50vh - 1.5rem);
+    right: 3rem;
+}
+
+/* MAIN */
+
+.main{
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 5rem;
+
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link__portrait{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.portrait__content{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10rem;
+    position: relative;
+}
+
+.portrait{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.portrait__name{
+    font-size: 2rem;
+    color: #D3573C;
+    font-size: 36px;
+}
+
+.portrait__legend{
+    text-align: center;
+    line-height: 1rem;
+}
+
+.location{
+    font-size: 13px;
+    color: #901C1C;
+}
+
+.description, .tarif{
+    font-size: 10px;
+}
+.tarif{
+    color: #757575;
+}
+
+/* page photographe */
+
+.main__photographe{
+    margin: 100px;
+}
+
+.photographe__banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    margin-bottom: 2rem;
+    background: #f1f1f1;
+}
+
+.photographe__details{
+    line-height: 3rem;
+}
+
+.photographe__name{
+    color: #D3573C;
+    font-size: 64px;
+}
+.photographe__location{
+    color: #901C1C;
+    font-size: 24px;
+}
+.photographe__tagline{
+    font-size: 18px;
+}
+
+.photographe__contact{
+    background-color: #901C1C;
+    color: white;
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 20px;
+}
+.photographe__contact:hover{
+    cursor: pointer;
+}
+
+.sortBy{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+.sortBy__title{
+    font-size: 18px;
+}
+
+.dropdown{
+    height: 20px;
+    overflow: hidden;
+    position: absolute;
+    top: 515px;
+    left: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1;
+    width: 150px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: #901C1C;
+    font-size: 18px;
+    color: white;
+    transition: all, 0.5s;
+}
+.dropdown__menu:not(:last-child){
+    border-bottom: 1px solid white;
+    padding-bottom: 1rem;
+}
+
+.dropdown__menu__option{
+    color: white;
+}
+.dropdown__menu__option:hover, .dropdown:hover{
+    cursor: pointer;
+}
+
+.dropdown__display{
+    height: 130px;
+}
+
+.btn__dropdown{
+    display: flex;
+    justify-content: space-between;
+    background-color: #901C1C;
+    color: white;
+}
+
+.btn__dropdown:hover{
+    cursor: pointer;
+}
+
+.drop__chevron{
+    transition: all, 0.5s;
+}
+
+.photographe__realisations{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 4rem;
+    row-gap: 2rem;
+}
+
+.photographe__card{
+    position: relative;
+    height: 351px;
+    overflow: hidden;
+}
+
+.picture{
+    height: fit-content;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.realisation__picture{
+    width: 130%;
+    border-radius: 0.5rem;
+}
+.realisation__picture:hover{
+    cursor: pointer;
+}
+
+.realisation__details{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: white;
+    color: #901C1C;
+}
+
+.realisation__title, .realisation__like{
+    font-size: 18px;
+    padding: 1rem;
+}
+
+.video{
+    width: 100%;
+    border-radius: 0.5rem;
+}
+.video:hover{
+    cursor: pointer;
+}
+
+.likesTarif{
+    position: fixed;
+    bottom: 0;
+    right: 2rem;
+    background-color: #D88876;
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    font-size: 24px;
+    border-radius: 0.5rem;
+}
+
+/* MODAL */
+
+.modal__back{
+    display: none;
+}
+.modal__display{
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #c4c4c467;
+    z-index: 9;
+}
+
+.modal{
+    width: 670px;
+    height: 820px;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 69px;
+    left: calc(50vw - 335px);
+    background-color: #D88876;
+    box-shadow: 0px 4px 5px 5px rgba(53, 53, 53, 0.473);
+}
+
+.modal__anim__in{
+    animation: modalAnimIn 1s ease-in-out;
+}
+@keyframes modalAnimIn {
+    0%{
+        transform: translateX(150%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.modal__anim__out{
+    animation: modalAnimOut 1s ease-in-out;
+}
+@keyframes modalAnimOut {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(150%);
+    }
+}
+
+.modal__head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal__title, .modal__name{
+    font-size: 64px;
+}
+
+.modal__form{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form__label{
+    font-size: 36px;
+    color: #312E2E;
+}
+.form__field{
+    height: 40px;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+}
+.form__field__message{
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.modal__btn{
+    width: 170px;
+    height: 69px;
+    background-color: #901C1C;
+    border: none;
+    color: white;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+}
+
+.modal__btn{
+    font-size: 18px;
+}
+.modal__close:hover, .modal__btn:hover{
+    cursor: pointer;
+}
+
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 1024px) {
+    .main{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .photographe__banner{
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    .modal{
+        width: 700px;
+        left: 2rem;
+    }
+
+    .dropdown{
+        top: 780px;
+    }
+
+    .photographe__realisations{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header__baniere{
+        flex-direction: column;
+    }
+
+    .main{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .main__photographe{
+        margin: 0;
+    }
+
+    .photographe__realisations{
+        grid-template-columns: repeat(1, 1fr);
+        padding: 1rem;
+    }
+
+    .sortBy{
+        padding-left: 1rem;
+    }
+
+    .dropdown{
+        top: 730px;
+        left: 6rem;
+    }
+
+    .likesTarif{
+        padding: 0 2rem;
+    }
+
+    .modal{
+        width: 350px;
+    }
+
+    .modal__title, .modal__name{
+        font-size: 48px;
+    }
+}
