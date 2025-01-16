@@ -36,6 +36,9 @@ export const photographe = (mediaByPhotographer, photographeById) => {
 
         likes += real.likes;
     });
+    const querystring = window.location.search;
+    const urlParams = new URLSearchParams(querystring);
+    const sort = urlParams.get("sort");
 
     return `
         <main class="main__photographe">
@@ -56,11 +59,11 @@ export const photographe = (mediaByPhotographer, photographeById) => {
                     <label for="sortBy__menu" class="sortBy__title">Trier par </label>
                     <div class="dropdown">
                         <div class="dropdown__menu btn__dropdown">
-                            <a href="photographe.html?id=${photographeById.id}&sort=popularite" data-sort="popularite" class="btn__drop__text dropdown__menu__option">Popularité</a>
+                            <p data-sort="popularite" class="btn__drop__text dropdown__menu__option">${sort ? sort : "Popularite"}</p>
                             <i class="fa-solid fa-chevron-down drop__chevron"></i>
                         </div>
-                        <a href="photographe.html?id=${photographeById.id}&sort=date" data-sort="date" class="dropdown__menu dropdown__menu__option">Date</a>
-                        <a href="photographe.html?id=${photographeById.id}&sort=titre" data-sort="titre" class="dropdown__menu dropdown__menu__option">Titre</a>
+                        <a href="photographe.html?id=${photographeById.id}&sort=${sort == "Date" ? "Popularite" : "Date"}" class="dropdown__menu dropdown__menu__option">${sort == "Date" ? "Popularite" : "Date"}</a>
+                        <a href="photographe.html?id=${photographeById.id}&sort=${sort == "Titre" ? "Popularite" : "Titre"}" class="dropdown__menu dropdown__menu__option">${sort == "Titre" ? "Popularite" : "Titre"}</a>
                     </div>
                 </div>
                 <div class="photographe__realisations">
@@ -83,45 +86,4 @@ export const dropDown = () => {
         dropdownMenu.classList.toggle("dropdown__display");
         chevron.classList.toggle("fa-rotate-180");
     })
-}
-
-
-
-export const dropdownDisplay = (photographeById) => {
-    const querystring = window.location.search;
-    const urlParams = new URLSearchParams(querystring);
-    const sort = urlParams.get("sort");
-    const sortButton = document.querySelector(".dropdown");
-    switch(sort){
-        case "popularite":
-            sortButton.innerHTML = `
-                <div class="dropdown__menu btn__dropdown">
-                    <a href="photographe.html?id=${photographeById.id}&sort=popularite" data-sort="popularite" class="btn__drop__text dropdown__menu__option">Popularité</a>
-                    <i class="fa-solid fa-chevron-down drop__chevron"></i>
-                </div>
-                <a href="photographe.html?id=${photographeById.id}&sort=date" data-sort="date" class="dropdown__menu dropdown__menu__option">Date</a>
-                <a href="photographe.html?id=${photographeById.id}&sort=titre" data-sort="titre" class="dropdown__menu dropdown__menu__option">Titre</a>
-            `;
-        break;
-        case "date":
-            sortButton.innerHTML = `
-                <div class="dropdown__menu btn__dropdown">
-                    <a href="photographe.html?id=${photographeById.id}&sort=date" data-sort="date" class="dropdown__menu__option">Date</a>
-                    <i class="fa-solid fa-chevron-down drop__chevron"></i>
-                </div>
-                <a href="photographe.html?id=${photographeById.id}&sort=popularite" data-sort="popularite" class="dropdown__menu btn__drop__text dropdown__menu__option">Popularité</a>
-                <a href="photographe.html?id=${photographeById.id}&sort=titre" data-sort="titre" class="dropdown__menu dropdown__menu__option">Titre</a>
-            `;
-        break;
-        case "titre":
-            sortButton.innerHTML = `
-                <div class="dropdown__menu btn__dropdown">
-                    <a href="photographe.html?id=${photographeById.id}&sort=titre" data-sort="titre" class="dropdown__menu__option">Titre</a>
-                    <i class="fa-solid fa-chevron-down drop__chevron"></i>
-                </div>
-                <a href="photographe.html?id=${photographeById.id}&sort=date" data-sort="date" class="dropdown__menu dropdown__menu__option">Date</a>
-                <a href="photographe.html?id=${photographeById.id}&sort=popularite" data-sort="popularite" class="dropdown__menu btn__drop__text dropdown__menu__option">Popularité</a>
-            `;
-        break;
-    }
 }

@@ -47,13 +47,13 @@ export const getMediaByPhotographer = async () => {
     })
 
     switch(sort){
-        case "popularite":
+        case "Popularite":
             oeuvre.sort((a, b) => b.likes - a.likes);
         break;
-        case "date":
+        case "Date":
             oeuvre.sort((a, b) => a.date.localeCompare(b.date));
         break;
-        case "titre":
+        case "Titre":
             oeuvre.sort((a, b) => a.title.localeCompare(b.title));
         break;
     }
