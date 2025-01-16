@@ -307,6 +307,21 @@ body, html{
     border-radius: 0.5rem;
 }
 
+.heart__icon{
+    cursor: pointer;
+}
+
+.likes{
+    display: flex;
+    align-items: center;
+}
+
+.totalLikes{
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
 /* MODAL */
 
 .modal__back{

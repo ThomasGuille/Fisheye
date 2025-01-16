@@ -47,7 +47,7 @@ export const getMediaByPhotographer = async () => {
     })
 
     switch(sort){
-        case "Popularite":
+        case "Popularité":
             oeuvre.sort((a, b) => b.likes - a.likes);
         break;
         case "Date":

@@ -1,6 +1,6 @@
 export const photographe = (mediaByPhotographer, photographeById) => {
     let realisations = ``;
-    let likes = 0;
+    let likesTotal = 0;
     mediaByPhotographer.forEach((real, index) => {
         if(real.video){
             realisations += `
@@ -14,7 +14,7 @@ export const photographe = (mediaByPhotographer, photographeById) => {
                     </div>
                     <figcaption class="realisation__details">
                         <p class="realisation__title">${real.title}</p>
-                        <p class="realisation__like">${real.likes} <i class="fa-solid fa-heart"></i></p>
+                        <div class="likes"><p class="realisation__like">${real.likes}</p> <i class="fa-solid fa-heart heart__icon"></i></div>
                     </figcaption>
                 </figure>
                     `;
@@ -28,14 +28,15 @@ export const photographe = (mediaByPhotographer, photographeById) => {
                     </div>
                     <figcaption class="realisation__details">
                         <p class="realisation__title">${real.title}</p>
-                        <p class="realisation__like">${real.likes} <i class="fa-solid fa-heart"></i></p>
+                        <div class="likes"><p class="realisation__like">${real.likes}</p> <i class="fa-solid fa-heart heart__icon"></i></div>
                     </figcaption>
                 </figure>
             `;
         }
 
-        likes += real.likes;
+        likesTotal += real.likes;
     });
+
     const querystring = window.location.search;
     const urlParams = new URLSearchParams(querystring);
     const sort = urlParams.get("sort");
@@ -59,18 +60,18 @@ export const photographe = (mediaByPhotographer, photographeById) => {
                     <label for="sortBy__menu" class="sortBy__title">Trier par </label>
                     <div class="dropdown">
                         <div class="dropdown__menu btn__dropdown">
-                            <p data-sort="popularite" class="btn__drop__text dropdown__menu__option">${sort ? sort : "Popularite"}</p>
+                            <p class="btn__drop__text dropdown__menu__option">${sort ? sort : "Popularité"}</p>
                             <i class="fa-solid fa-chevron-down drop__chevron"></i>
                         </div>
-                        <a href="photographe.html?id=${photographeById.id}&sort=${sort == "Date" ? "Popularite" : "Date"}" class="dropdown__menu dropdown__menu__option">${sort == "Date" ? "Popularite" : "Date"}</a>
-                        <a href="photographe.html?id=${photographeById.id}&sort=${sort == "Titre" ? "Popularite" : "Titre"}" class="dropdown__menu dropdown__menu__option">${sort == "Titre" ? "Popularite" : "Titre"}</a>
+                        <a href="photographe.html?id=${photographeById.id}&sort=${sort == "Date" ? "Popularité" : "Date"}" class="dropdown__menu dropdown__menu__option">${sort == "Date" ? "Popularité" : "Date"}</a>
+                        <a href="photographe.html?id=${photographeById.id}&sort=${sort == "Titre" ? "Popularité" : "Titre"}" class="dropdown__menu dropdown__menu__option">${sort == "Titre" ? "Popularité" : "Titre"}</a>
                     </div>
                 </div>
                 <div class="photographe__realisations">
                     ${realisations}
                 </div>
                 <div class="likesTarif">
-                    <p class="nbLikes">${likes} <i class="fa-solid fa-heart"></i></p>
+                    <div class="totalLikes"><p class="nbLikes">${likesTotal}</p> <i class="fa-solid fa-heart nbLikes__heart"></i></div>
                     <p class="tarifpagephoto">${photographeById.price}€ / jour</p>
                 </div>
             </div>
@@ -85,5 +86,21 @@ export const dropDown = () => {
     btnDrop.addEventListener("click", () => {
         dropdownMenu.classList.toggle("dropdown__display");
         chevron.classList.toggle("fa-rotate-180");
+    })
+}
+
+export const LikeAdd = () => {
+    const heartLike = document.querySelectorAll(".heart__icon");
+    heartLike.forEach(heart => {
+        heart.addEventListener("click", () => {
+            const nbLikesDisp = heart.parentNode.children[0];
+            const nbTotaltLikesDisp = document.querySelector(".nbLikes");
+            let LikesIncrease = parseInt(nbLikesDisp.innerText);
+            let likesTotalIncrease = parseInt(nbTotaltLikesDisp.innerText);
+            LikesIncrease++;
+            likesTotalIncrease++;
+            nbLikesDisp.innerHTML = LikesIncrease;
+            nbTotaltLikesDisp.innerText = likesTotalIncrease;
+        })
     })
 }

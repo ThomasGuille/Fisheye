@@ -1,6 +1,6 @@
 import { getMediaByPhotographer, photographerById } from "../utils/api.js";
 import { header } from "../components/header.js";
-import { photographe, dropDown } from "../components/pagePhotographe.js";
+import { photographe, dropDown, LikeAdd } from "../components/pagePhotographe.js";
 import { modal, modalDisplay } from "../components/modal.js";
 import { lightBox, lightboxOpen, lightboxNext, lightboxPrevious, lightboxClose } from "../utils/lightbox.js";
 
@@ -23,6 +23,7 @@ const displayData = (mediaByPhotographer, photographeById) => {
     lightboxNext(mediaByPhotographer, photographeById);
     lightboxPrevious(mediaByPhotographer, photographeById);
     lightboxClose();
+    LikeAdd();
 }
 
 (async () => {
