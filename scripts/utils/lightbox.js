@@ -12,6 +12,8 @@ export const lightBox = () => {
     `;
 }
 
+let compteur = 0;
+
 export const lightboxOpen = () => {
     const lightboxPicture = document.querySelector(".picture__lightbox");
     const listReal = document.querySelectorAll(".video, .realisation__picture");
@@ -32,13 +34,10 @@ export const lightboxOpen = () => {
             const title = elem.getAttribute("alt");
             lightboxTitle.innerText = title;
             lightboxOpening.classList.add("lightbox__display");
+            compteur = index;
         })
     })
 }
-
-let compteur = 0;
-let indexation = 0;
-let position = -1;
 
 export const lightboxNext = (mediaByPhotographer, photographeById) => {
     const btnNext = document.querySelector(".next");
@@ -48,82 +47,37 @@ export const lightboxNext = (mediaByPhotographer, photographeById) => {
     const name = photographeById.name;
     
     btnNext.addEventListener("click", () => {
-        const picPosition = document.querySelector(".lightbox__pic");
-        const currentPosition = parseInt(picPosition.getAttribute("data-position"));
-        
         compteur++;
-        indexation = currentPosition + compteur;
-        if(indexation < arrayLength){
-            let typeIndex = mediaByPhotographer[indexation];
+        if(compteur > arrayLength - 1){compteur = 0};
+        let typeIndex = mediaByPhotographer[compteur];
                     
-            if(typeIndex.video){
-                lightboxPicture.innerHTML = `<video data-type="video" data-position="${currentPosition}" class="video__lightbox current__picture lightbox__pic" alt="" controls autoplay muted loop><source src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[indexation].video}" type="video/mp4"></video>`;                       
-            }else{
-                lightboxPicture.innerHTML = `<img data-type="image" data-position="${currentPosition}" src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[indexation].image}" alt="" class="lightbox__picture current__picture lightbox__pic">`;
-            }
-            lightboxTitle.innerText = mediaByPhotographer[indexation].title;
+        if(typeIndex.video){
+            lightboxPicture.innerHTML = `<video data-type="video" data-position="${compteur}" class="video__lightbox current__picture lightbox__pic" alt="" controls autoplay muted loop><source src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[compteur].video}" type="video/mp4"></video>`;                       
         }else{
-            position++;
-            if(position >= arrayLength){
-                position = 0
-            }
-            let typePosition = mediaByPhotographer[position];
-            if(typePosition.video){
-                lightboxPicture.innerHTML = `<video data-type="video" data-position="${currentPosition}" class="video__lightbox current__picture lightbox__pic" alt="" controls autoplay muted loop><source src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[position].video}" type="video/mp4"></video>`;                       
-            }else{
-                lightboxPicture.innerHTML = `<img data-type="image" data-position="${currentPosition}" src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[position].image}" alt="" class="lightbox__picture current__picture lightbox__pic">`;
-            }
-            lightboxTitle.innerText = mediaByPhotographer[position].title;
-        }
-        // console.log("c " + compteur);
-        // console.log("i " + indexation);
-        // console.log("p " + position);
-        // console.log("stop");
-        
+            lightboxPicture.innerHTML = `<img data-type="image" data-position="${compteur}" src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[compteur].image}" alt="" class="lightbox__picture current__picture lightbox__pic">`;
+        };
+        lightboxTitle.innerText = mediaByPhotographer[compteur].title;
     })
 }
 
 export const lightboxPrevious = (mediaByPhotographer, photographeById) => {
-    const btnPrevious = document.querySelector(".previous");
+    const btnNext = document.querySelector(".previous");
     const lightboxPicture = document.querySelector(".picture__lightbox");
     const lightboxTitle = document.querySelector(".lightbox__title");
     const arrayLength = mediaByPhotographer.length;
     const name = photographeById.name;
     
-    btnPrevious.addEventListener("click", () => {
-        const picPosition = document.querySelector(".lightbox__pic");
-        const currentPosition = parseInt(picPosition.getAttribute("data-position"));
-
-        if(position <= 0){
-            position = arrayLength;
-        }
-        
-        compteur++;
-        indexation = currentPosition - compteur;
-        if(indexation >= 0){
-            let typeIndex = mediaByPhotographer[indexation];
+    btnNext.addEventListener("click", () => {
+        compteur--;
+        if(compteur < 0){compteur = arrayLength - 1};
+        let typeIndex = mediaByPhotographer[compteur];
                     
-            if(typeIndex.video){
-                lightboxPicture.innerHTML = `<video data-type="video" data-position="${currentPosition}" class="video__lightbox current__picture lightbox__pic" alt="" controls autoplay muted loop><source src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[indexation].video}" type="video/mp4"></video>`;
-            }else{
-                lightboxPicture.innerHTML = `<img data-type="image" data-position="${currentPosition}" src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[indexation].image}" alt="" class="lightbox__picture current__picture lightbox__pic">`;
-            }
-            lightboxTitle.innerText = mediaByPhotographer[indexation].title;
+        if(typeIndex.video){
+            lightboxPicture.innerHTML = `<video data-type="video" data-position="${compteur}" class="video__lightbox current__picture lightbox__pic" alt="" controls autoplay muted loop><source src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[compteur].video}" type="video/mp4"></video>`;                       
         }else{
-            position--;
-            let typePosition = mediaByPhotographer[position];
-            if(typePosition.video){
-                lightboxPicture.innerHTML = `<video data-type="video" data-position="${currentPosition}" class="video__lightbox current__picture lightbox__pic" alt="" controls autoplay muted loop><source src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[position].video}" type="video/mp4"></video>`;    
-            }else{
-                lightboxPicture.innerHTML = `<img data-type="image" data-position="${currentPosition}" src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[position].image}" alt="" class="lightbox__picture current__picture lightbox__pic">`;
-            }
-            lightboxTitle.innerText = mediaByPhotographer[position].title;
-        }
-        // console.log("c " + compteur);
-        // console.log("i " + indexation);
-        // console.log("p " + position);
-        // console.log("stop");
-        
+            lightboxPicture.innerHTML = `<img data-type="image" data-position="${compteur}" src="assets/images/photographers/samplePhotos-Small/${name}/${mediaByPhotographer[compteur].image}" alt="" class="lightbox__picture current__picture lightbox__pic">`;
+        };
+        lightboxTitle.innerText = mediaByPhotographer[compteur].title;
     })
 }
 
@@ -133,7 +87,5 @@ export const lightboxClose = () => {
     closeBtn.addEventListener("click", () => {
         lightboxOpening.classList.remove("lightbox__display");
         compteur = 0;
-        indexation = 0;
-        position = -1;
     })
 }
